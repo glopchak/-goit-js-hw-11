@@ -1,0 +1,40 @@
+.gallery {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: -15px;
+    margin-top: 20px;
+}
+
+.card {
+    flex-basis: calc((100% - 120px) / 4);
+    margin: 15px;
+    // box-shadow: 0px 5px 5px aqua;
+
+}
+
+.info {
+    display: flex;
+    justify-content: center;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+
+    margin-top: 0;
+    margin-bottom: 0;
+
+    &:not(:last-child) {
+        margin-right: 20px;
+    }
+
+    & b {
+        margin-bottom: 5px;
+    }
+}
