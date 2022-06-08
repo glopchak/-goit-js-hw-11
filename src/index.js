@@ -6,7 +6,7 @@ import { ImgsApiService } from './js/api-service';
 import { allRefs } from './js/all-refs';
 
 import SimpleLightbox from 'simplelightbox';
-// import 'simplelightbox/dist/simple-lightbox.min.css';
+import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const apiService = new ImgsApiService();
 const refs = allRefs();
