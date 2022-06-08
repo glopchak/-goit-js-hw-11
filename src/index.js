@@ -10,7 +10,7 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const apiService = new ImgsApiService();
 const refs = allRefs();
-const lightbox = new SimpleLightbox('.gallery a', { captionsData: 'alt', captionDelay: 250 });
+// let lightbox = new SimpleLightbox('.gallery a', { captionsData: 'alt', captionDelay: 250 });
 
 refs.searchForm.addEventListener('submit', onSubmitFofm);
 refs.loadMoreBtn.addEventListener('click', onClickLoadMore);
@@ -25,7 +25,7 @@ async function onSubmitFofm(evt) {
   resetGallery();
   apiService.resetPage();
   apiService.seachImg(currentRequest);
-  lightbox.refresh();
+  // lightbox.refresh();
 
   try {
     const data = await apiService.fetchImgs();
@@ -38,6 +38,8 @@ async function onSubmitFofm(evt) {
     }
 
     renderGallery(data.data.hits);
+    let lightbox = new SimpleLightbox('.gallery a', { captionsData: 'alt', captionDelay: 250 });
+    lightbox.refresh();
     loadMoreBtnVisible();
     checkGalleryEndPoint(data.data);
 
