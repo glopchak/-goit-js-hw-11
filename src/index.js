@@ -56,6 +56,8 @@ async function onSubmitFofm(evt) {
 
 async function onClickLoadMore() {
   loadMoreBtnHidden();
+  let lightbox = new SimpleLightbox('.gallery a', { captionsData: 'alt', captionDelay: 250 });
+
   lightbox.refresh();
 
   try {
