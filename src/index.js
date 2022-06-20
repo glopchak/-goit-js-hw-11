@@ -41,14 +41,9 @@ async function onSubmitFofm(evt) {
     let lightbox = new SimpleLightbox('.gallery a', { captionsData: 'alt', captionDelay: 250 });
     lightbox.refresh();
     loadMoreBtnVisible();
+    totalImgMessage(data.data);
     checkGalleryEndPoint(data.data);
 
-    if (apiService.totalImgs >= data.totalHits) {
-      loadMoreBtnHidden();
-      return Notify.info(
-        "We're sorry, but you've reached the end of search results."
-      );
-    }
   } catch (error) {
     console.log(error.message);
   }
@@ -63,11 +58,12 @@ async function onClickLoadMore() {
   try {
     const data = await apiService.fetchImgs();
     renderGallery(data.data.hits);
-    checkGalleryEndPoint(data);
+    checkGalleryEndPoint(data.data);
   } catch (error) {
     console.log(error.message);
   }
   loadMoreBtnVisible();
+ 
 }
 
 function renderGallery(images) {
@@ -92,5 +88,10 @@ function checkGalleryEndPoint(data) {
     return Notify.info(
       "We're sorry, but you've reached the end of search results."
     );
+    
   }
+}
+
+function totalImgMessage({totalHits}) {
+  Notify.success(`Hooray! We found ${totalHits} images.`);
 }
