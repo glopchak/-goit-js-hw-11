@@ -62,7 +62,6 @@ async function onClickLoadMore() {
   } catch (error) {
     console.log(error.message);
   }
-  loadMoreBtnVisible();
  
 }
 
