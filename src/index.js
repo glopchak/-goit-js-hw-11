@@ -29,7 +29,7 @@ async function onSubmitFofm(evt) {
 
   try {
     const data = await apiService.fetchImgs();
-    console.log(data.data.hits)
+    console.log(data.data.hits);
 
     if (data.data.total === 0) {
       return Notify.failure(
@@ -38,12 +38,14 @@ async function onSubmitFofm(evt) {
     }
 
     renderGallery(data.data.hits);
-    let lightbox = new SimpleLightbox('.gallery a', { captionsData: 'alt', captionDelay: 250 });
+    let lightbox = new SimpleLightbox('.gallery a', {
+      captionsData: 'alt',
+      captionDelay: 250,
+    });
     lightbox.refresh();
     loadMoreBtnVisible();
     totalImgMessage(data.data);
     checkGalleryEndPoint(data.data);
-
   } catch (error) {
     console.log(error.message);
   }
@@ -51,7 +53,10 @@ async function onSubmitFofm(evt) {
 
 async function onClickLoadMore() {
   loadMoreBtnHidden();
-  let lightbox = new SimpleLightbox('.gallery a', { captionsData: 'alt', captionDelay: 250 });
+  let lightbox = new SimpleLightbox('.gallery a', {
+    captionsData: 'alt',
+    captionDelay: 250,
+  });
 
   lightbox.refresh();
 
@@ -62,7 +67,6 @@ async function onClickLoadMore() {
   } catch (error) {
     console.log(error.message);
   }
- 
 }
 
 function renderGallery(images) {
@@ -87,10 +91,10 @@ function checkGalleryEndPoint(data) {
     return Notify.info(
       "We're sorry, but you've reached the end of search results."
     );
-    
   }
+  loadMoreBtnVisible();
 }
 
-function totalImgMessage({totalHits}) {
+function totalImgMessage({ totalHits }) {
   Notify.success(`Hooray! We found ${totalHits} images.`);
 }
